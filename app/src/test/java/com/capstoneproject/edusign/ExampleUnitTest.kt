@@ -1,4 +1,4 @@
-package com.testmediapie
+package com.capstoneproject.edusign
 
 import org.junit.Test
 

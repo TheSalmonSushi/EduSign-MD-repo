@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.testmediapie'
+    namespace 'com.capstoneproject.edusign'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.testmediapie"
+        applicationId "com.capstoneproject.edusign"
         minSdk 24
         targetSdk 33
         versionCode 1

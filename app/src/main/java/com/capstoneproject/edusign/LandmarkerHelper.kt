@@ -1,4 +1,4 @@
-package com.testmediapie
+package com.capstoneproject.edusign
 
 import android.content.Context
 import android.graphics.Bitmap

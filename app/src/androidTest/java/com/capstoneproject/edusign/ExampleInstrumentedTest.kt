@@ -1,4 +1,4 @@
-package com.testmediapie
+package com.capstoneproject.edusign
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

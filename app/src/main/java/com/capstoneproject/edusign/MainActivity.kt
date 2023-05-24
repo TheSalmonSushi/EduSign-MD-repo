@@ -1,4 +1,4 @@
-package com.testmediapie
+package com.capstoneproject.edusign
 
 import android.Manifest
 import android.content.ContentValues
@@ -25,6 +25,7 @@ import androidx.camera.video.VideoCapture
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.testmediapie.R
 import com.testmediapie.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -52,7 +53,8 @@ class MainActivity : AppCompatActivity() {
             startCamera()
         } else {
             ActivityCompat.requestPermissions(
-                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
+                this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS
+            )
         }
 
         landmarkerHelper =
@@ -173,7 +175,8 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             recording?.close()
                             recording = null
-                            Log.e(TAG, "Video capture ends with error: " +
+                            Log.e(
+                                TAG, "Video capture ends with error: " +
                                     "${recordEvent.error}")
                         }
                         viewBinding.videoCaptureButton.apply {
