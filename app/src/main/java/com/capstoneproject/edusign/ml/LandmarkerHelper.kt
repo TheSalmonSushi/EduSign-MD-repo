@@ -1,4 +1,4 @@
-package com.capstoneproject.edusign
+package com.capstoneproject.edusign.ml
 
 import android.content.Context
 import android.graphics.Bitmap

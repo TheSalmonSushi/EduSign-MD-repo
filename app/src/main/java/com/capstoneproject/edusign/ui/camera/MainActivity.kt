@@ -1,13 +1,15 @@
-package com.capstoneproject.edusign
+package com.capstoneproject.edusign.ui.camera
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
@@ -25,8 +27,10 @@ import androidx.camera.video.VideoCapture
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.testmediapie.R
-import com.testmediapie.databinding.ActivityMainBinding
+import com.capstoneproject.edusign.ml.LandmarkerHelper
+import com.capstoneproject.edusign.R
+import com.capstoneproject.edusign.databinding.ActivityMainBinding
+import com.capstoneproject.edusign.ui.homepage.HomeActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -60,27 +64,34 @@ class MainActivity : AppCompatActivity() {
         landmarkerHelper =
             LandmarkerHelper(
                 context = this,
-                minDetectionConfidence = DEFAULT_DETECTION_CONFIDENCE,
-                minTrackingConfidence = DEFAULT_TRACKING_CONFIDENCE,
-                minPresenceConfidence = DEFAULT_PRESENCE_CONFIDENCE
+                minDetectionConfidence = MainActivity.DEFAULT_DETECTION_CONFIDENCE,
+                minTrackingConfidence = MainActivity.DEFAULT_TRACKING_CONFIDENCE,
+                minPresenceConfidence = MainActivity.DEFAULT_PRESENCE_CONFIDENCE
             )
 
         countDownTimer = object : CountDownTimer(maxTime.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timeRemaining = millisUntilFinished / 1000
             }
+
             override fun onFinish() {
                 captureVideo()
             }
         }
 
         // Set up the listeners for take photo and video capture buttons
-        viewBinding.videoCaptureButton.setOnClickListener { captureVideo() }
+        viewBinding.videoCaptureButton.setOnClickListener {
+            val delayInMillis = 2000 // Adjust the delay time as needed (in milliseconds)
+            Handler().postDelayed({
+                captureVideo()
+            }, delayInMillis.toLong())
+        }
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
-            baseContext, it) == PackageManager.PERMISSION_GRANTED
+            baseContext, it
+        ) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun startCamera() {
@@ -113,9 +124,10 @@ class MainActivity : AppCompatActivity() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, videoCapture)
+                    this, cameraSelector, preview, videoCapture
+                )
 
-            } catch(exc: Exception) {
+            } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
 
@@ -156,7 +168,7 @@ class MainActivity : AppCompatActivity() {
         recording = videoCapture.output
             .prepareRecording(this, mediaStoreOutputOptions)
             .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
-                when(recordEvent) {
+                when (recordEvent) {
                     is VideoRecordEvent.Start -> {
                         viewBinding.videoCaptureButton.apply {
                             text = getString(R.string.stop_capture)
@@ -170,14 +182,20 @@ class MainActivity : AppCompatActivity() {
                                     "${recordEvent.outputResults.outputUri}"
                             Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT)
                                 .show()
-                            runDetectionOnVideo(recordEvent.outputResults.outputUri)
+                            //runDetectionOnVideo(recordEvent.outputResults.outputUri)
                             Log.d(TAG, msg)
+
+                            val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                            intent.putExtra("uri", recordEvent.outputResults.outputUri.toString() )
+                            startActivity(intent)
+
                         } else {
                             recording?.close()
                             recording = null
                             Log.e(
                                 TAG, "Video capture ends with error: " +
-                                    "${recordEvent.error}")
+                                        "${recordEvent.error}"
+                            )
                         }
                         viewBinding.videoCaptureButton.apply {
                             text = getString(R.string.start_capture)
@@ -204,15 +222,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
-        IntArray) {
+        IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                Toast.makeText(this,
+                Toast.makeText(
+                    this,
                     "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
                 finish()
             }
         }
@@ -223,7 +244,7 @@ class MainActivity : AppCompatActivity() {
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
-            mutableListOf (
+            mutableListOf(
                 Manifest.permission.CAMERA
             ).apply {
                 if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
