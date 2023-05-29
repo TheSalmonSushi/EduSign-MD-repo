@@ -23,7 +23,15 @@
 
         <ImageButton
             android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/image"
+            android:layout_margin="10dp"
+            android:background="@drawable/rounded_rectangle"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src=""/>
+            android:orientation="horizontal">
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
