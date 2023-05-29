@@ -6,4 +6,7 @@
     <string name="menu_title_bottom_nav_dictionary">DICTIONARY</string>
     <string name="menu_title_blank" translatable="false">" "</string>
     <string name="menu_title_bottom_nav_library">DICTIONARY</string>
+    <string name="challenge">Challenge</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
