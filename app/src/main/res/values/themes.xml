@@ -1,9 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TestMediapie" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.EduSign" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.TestMediapie" parent="Base.Theme.TestMediapie" />
+    <style name="Theme.EduSign" parent="Base.Theme.EduSign" />
 </resources>
