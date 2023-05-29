@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_challenge"
         android:icon="@drawable/baseline_home_24"
         android:title="@string/menu_title_bottom_nav_home"
         app:showAsAction="ifRoom" />
@@ -15,7 +15,7 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/navigation_explore"
+        android:id="@+id/navigation_dictionary"
         android:icon="@drawable/baseline_menu_book_24"
         android:title="@string/menu_title_bottom_nav_dictionary"
         app:showAsAction="ifRoom" />

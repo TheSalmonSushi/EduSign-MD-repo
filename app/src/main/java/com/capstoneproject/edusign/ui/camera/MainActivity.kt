@@ -30,7 +30,7 @@ import androidx.core.content.ContextCompat
 import com.capstoneproject.edusign.ml.LandmarkerHelper
 import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.databinding.ActivityMainBinding
-import com.capstoneproject.edusign.ui.homepage.HomeActivity
+import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
