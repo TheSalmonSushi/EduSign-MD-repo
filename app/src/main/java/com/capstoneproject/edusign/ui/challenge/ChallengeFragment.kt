@@ -38,6 +38,10 @@ class ChallengeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_challenge, container, false)
     }
 
+    fun test(){
+
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
