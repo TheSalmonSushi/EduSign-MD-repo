@@ -31,6 +31,7 @@ import com.capstoneproject.edusign.ml.LandmarkerHelper
 import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.databinding.ActivityMainBinding
 import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
+import com.capstoneproject.edusign.ui.resultPage.ResultTranslateActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -38,8 +39,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
 
     private lateinit var countDownTimer: CountDownTimer
+    private lateinit var countDownTimerForDelay: CountDownTimer
     private var isTimerRunning = false
     private var timeRemaining: Long = 0
+    private var delayRemaining: Long = 0
     private val maxTime = 3000
 
     private var videoCapture: VideoCapture<Recorder>? = null
@@ -72,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         countDownTimer = object : CountDownTimer(maxTime.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timeRemaining = millisUntilFinished / 1000
+
             }
 
             override fun onFinish() {
@@ -81,7 +85,18 @@ class MainActivity : AppCompatActivity() {
 
         // Set up the listeners for take photo and video capture buttons
         viewBinding.videoCaptureButton.setOnClickListener {
-            val delayInMillis = 2000 // Adjust the delay time as needed (in milliseconds)
+            val delayInMillis = 5000 // Adjust the delay time as needed (in milliseconds)
+            countDownTimerForDelay = object : CountDownTimer(delayInMillis.toLong(), 1000) {
+                override fun onTick(p0: Long) {
+                    delayRemaining = p0 / 1000
+                    viewBinding.timerText.text = timeRemaining.toString()
+                }
+
+                override fun onFinish() {
+                }
+
+            }
+
             Handler().postDelayed({
                 captureVideo()
             }, delayInMillis.toLong())
@@ -185,8 +200,8 @@ class MainActivity : AppCompatActivity() {
                             //runDetectionOnVideo(recordEvent.outputResults.outputUri)
                             Log.d(TAG, msg)
 
-                            val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                            intent.putExtra("uri", recordEvent.outputResults.outputUri.toString() )
+                            val intent = Intent(this@MainActivity, ResultTranslateActivity::class.java)
+                            intent.putExtra("uri", recordEvent.outputResults.outputUri)
                             startActivity(intent)
 
                         } else {
@@ -213,11 +228,6 @@ class MainActivity : AppCompatActivity() {
             countDownTimer.start()
             isTimerRunning = true
         }
-    }
-
-    private fun runDetectionOnVideo(uri: Uri) {
-        viewBinding.viewFinder.visibility = View.GONE
-        val dataLandmark = landmarkerHelper.getLandmarks(uri, VIDEO_INTERVAL_MS)
     }
 
     override fun onRequestPermissionsResult(
@@ -251,8 +261,6 @@ class MainActivity : AppCompatActivity() {
                     add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 }
             }.toTypedArray()
-
-        private const val VIDEO_INTERVAL_MS = 54L
         const val DEFAULT_DETECTION_CONFIDENCE = 0.5F
         const val DEFAULT_TRACKING_CONFIDENCE = 0.5F
         const val DEFAULT_PRESENCE_CONFIDENCE = 0.5F
