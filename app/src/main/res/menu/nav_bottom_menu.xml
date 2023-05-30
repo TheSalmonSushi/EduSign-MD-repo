@@ -6,6 +6,7 @@
         android:id="@+id/navigation_challenge"
         android:icon="@drawable/edusign_logo"
         android:title="@string/menu_title_bottom_nav_home"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        />
 
 </menu>
