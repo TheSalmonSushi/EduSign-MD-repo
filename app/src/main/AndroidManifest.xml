@@ -17,10 +17,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TestMediapie"
+        android:theme="@style/Theme.EduSign"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.splashActivity.SplashActivity"
             android:exported="false" />
         <activity
             android:name=".ui.camera.MainActivity"
