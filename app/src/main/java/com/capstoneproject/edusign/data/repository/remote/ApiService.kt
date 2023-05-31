@@ -8,8 +8,8 @@ import retrofit2.http.*
 interface ApiService {
     @Multipart
     @POST("/predict")
-    fun uploadVideo(
+    suspend fun uploadVideo(
         @Part file: MultipartBody.Part,
-    ): Call<Prediction>
+    ): Prediction
 
 }
