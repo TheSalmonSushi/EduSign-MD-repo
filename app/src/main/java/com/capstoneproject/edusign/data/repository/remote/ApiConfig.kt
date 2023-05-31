@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class ApiConfig {
     companion object{
@@ -16,9 +17,11 @@ class ApiConfig {
             }
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+                .connectTimeout(180, TimeUnit.SECONDS) // Connection timeout
+                .readTimeout(60, TimeUnit.SECONDS) // Read timeout
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://flaskapp-cr-v1-cky5j3e4sq-et.a.run.app")
+                .baseUrl("https://flaskapp-cr-v1-cky5j3e4sq-et.a.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
