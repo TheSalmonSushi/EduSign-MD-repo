@@ -1,16 +1,18 @@
 package com.capstoneproject.edusign.ui.resultPage
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.data.model.Prediction
 import com.capstoneproject.edusign.databinding.ActivityResultTranslateBinding
+import com.capstoneproject.edusign.ui.challenge.ChallengeFragment
+import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
 import com.capstoneproject.edusign.util.ViewModelFactory
-import org.json.JSONArray
-
 
 class ResultTranslateActivity : AppCompatActivity() {
 
@@ -30,44 +32,51 @@ class ResultTranslateActivity : AppCompatActivity() {
 
         viewModel.performPrediction(videoUri)
 
-        // Observe the LiveData for prediction result
         viewModel.predictionLiveData.observe(this) { prediction ->
-            // Handle the prediction result
             handlePredictionResult(prediction)
         }
 
-        // Observe the LiveData for error message
         viewModel.errorLiveData.observe(this) { errorMessage ->
-            // Handle the error message
             handleErrorMessage(errorMessage)
         }
 
-        // Observe the LiveData for loading state
         viewModel.loadingLiveData.observe(this) { isLoading ->
             if (isLoading) {
-                // Show progress bar or disable buttons
                 resultTranslateBinding.progressBar.visibility = View.VISIBLE
                 resultTranslateBinding.translateResult.visibility = View.INVISIBLE
             } else {
-                // Hide progress bar or enable buttons
                 resultTranslateBinding.progressBar.visibility = View.GONE
                 resultTranslateBinding.translateResult.visibility = View.VISIBLE
             }
         }
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        intent.putExtra("selectedFragment", R.id.navigation_challenge)
+        startActivity(intent)
+    }
 
     private fun handlePredictionResult(prediction: Prediction) {
         val predictionsList = prediction.prediction
         val valuesList = prediction.value
 
-        val numberedPredictions = predictionsList.mapIndexed { index, value ->
-            val predictionValue = valuesList.getOrNull(index) ?: ""
-            "$value = $predictionValue"
-        }
-        val predictionsString = numberedPredictions.joinToString("\n")
+        // nge test yang kata pertama aja
+        val firstPrediction = predictionsList.firstOrNull() ?: ""
+        val firstValue = valuesList.firstOrNull() ?: ""
 
-        resultTranslateBinding.translateResult.text = predictionsString
+        val formattedResult = "$firstPrediction"
+        resultTranslateBinding.translateResult.text = formattedResult
+
+        // ini yang pake list
+//        val numberedPredictions = predictionsList.mapIndexed { index, value ->
+//            val predictionValue = valuesList.getOrNull(index) ?: ""
+//            "$value = $predictionValue %"
+//        }
+//        val predictionsString = numberedPredictions.joinToString("\n")
+//
+//        resultTranslateBinding.translateResult.text = predictionsString
     }
 
     private fun handleErrorMessage(error: String) {

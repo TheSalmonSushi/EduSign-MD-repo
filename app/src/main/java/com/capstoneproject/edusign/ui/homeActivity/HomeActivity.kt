@@ -23,8 +23,15 @@ class HomeActivity : AppCompatActivity() {
         setContentView(homeActivityBinding.root)
 
         fragmentChallenge = ChallengeFragment()
+        fragmentSwitch(fragmentChallenge!!)
+
         val fragmentDictionary = DictionaryFragment()
 
+        val selectedFragment = intent.getIntExtra("selectedFragment", R.id.navigation_challenge)
+        when (selectedFragment) {
+            R.id.navigation_challenge -> fragmentSwitch(fragmentChallenge!!)
+            R.id.navigation_dictionary -> fragmentSwitch(fragmentDictionary)
+        }
 
         homeActivityBinding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId) {
@@ -47,8 +54,6 @@ class HomeActivity : AppCompatActivity() {
         }
 
         homeActivityBinding.bottomNavigationView.background = null
-
-
 
 
     }
