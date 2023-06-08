@@ -4,6 +4,8 @@ import android.Manifest
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraSelector
@@ -25,6 +28,7 @@ import androidx.camera.video.VideoCapture
 import androidx.camera.video.VideoRecordEvent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.databinding.ActivityMainBinding
 import com.capstoneproject.edusign.ui.resultPage.ResultTranslateActivity
 import java.text.SimpleDateFormat
@@ -39,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     private var timeRemaining: Long = 0
     private var delayRemaining: Long = 0
     private val maxTime = 3000
+    private val delayInMillis = 5000 // Adjust the delay time as needed (in milliseconds)
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
@@ -68,26 +73,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Set up the listeners for take photo and video capture buttons
         viewBinding.videoCaptureButton.setOnClickListener {
+            viewBinding.timerText.visibility = View.VISIBLE
             viewBinding.videoCaptureButton.isEnabled = false
-
-            val delayInMillis = 5000 // Adjust the delay time as needed (in milliseconds)
-            countDownTimerForDelay = object : CountDownTimer(delayInMillis.toLong(), 1000) {
-                override fun onTick(p0: Long) {
-                    delayRemaining = p0 / 1000
-                    viewBinding.timerText.text = timeRemaining.toString()
-                }
-
-                override fun onFinish() {
-                }
-
-            }
-
-            Handler().postDelayed({
-                captureVideo()
-            }, delayInMillis.toLong())
+            captureVideo()
         }
+
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
@@ -165,44 +156,56 @@ class MainActivity : AppCompatActivity() {
             .build()
 
 
-
-        recording = videoCapture.output
-            .prepareRecording(this, mediaStoreOutputOptions)
-            .start(ContextCompat.getMainExecutor(this)) { recordEvent ->
-                when (recordEvent) {
-                    is VideoRecordEvent.Start -> {
-                        viewBinding.videoCaptureButton.apply {
-                            text = "Recording"
-                            startTimer()
-                        }
-                    }
-                    is VideoRecordEvent.Finalize -> {
-                        if (!recordEvent.hasError()) {
-                            val videoUri = recordEvent.outputResults.outputUri
-                            val msg = "Video capture succeeded: " +
-                                    "$videoUri"
-                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                            Log.d(TAG, msg)
-                            val intent = Intent(this@MainActivity, ResultTranslateActivity::class.java)
-                            intent.putExtra("videoUri", videoUri.toString()) // Pass the videoUri as a string
-                            startActivity(intent)
-                            //predict(videoUri)
-                        } else {
-                            recording?.close()
-                            recording = null
-                            Log.e(
-                                TAG, "Video capture ends with error: " +
-                                        "${recordEvent.error}"
-                            )
-                        }
-                        viewBinding.videoCaptureButton.apply {
-                            text = "Start"
-                            isEnabled = true
-                        }
-                        isTimerRunning = false
-                    }
-                }
+        val countDownTimer = object: CountDownTimer(delayInMillis.toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsRemaining = millisUntilFinished / 1000
+                viewBinding.timerText.text = secondsRemaining.toString()
             }
+
+            override fun onFinish() {
+                viewBinding.timerText.text = "Start Movement"
+                recording = videoCapture.output
+                    .prepareRecording(this@MainActivity, mediaStoreOutputOptions)
+                    .start(ContextCompat.getMainExecutor(this@MainActivity)) { recordEvent ->
+                        when (recordEvent) {
+                            is VideoRecordEvent.Start -> {
+                                viewBinding.videoCaptureButton.apply {
+                                    text = "Recording"
+                                    setBackgroundColor(Color.RED)
+                                    startTimer()
+                                }
+                            }
+                            is VideoRecordEvent.Finalize -> {
+                                if (!recordEvent.hasError()) {
+                                    val videoUri = recordEvent.outputResults.outputUri
+                                    val msg = "Video capture succeeded: " +
+                                            "$videoUri"
+                                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                                    Log.d(TAG, msg)
+                                    val intent = Intent(this@MainActivity, ResultTranslateActivity::class.java)
+                                    intent.putExtra("videoUri", videoUri.toString()) // Pass the videoUri as a string
+                                    startActivity(intent)
+                                    //predict(videoUri)
+                                } else {
+                                    recording?.close()
+                                    recording = null
+                                    Log.e(
+                                        TAG, "Video capture ends with error: " +
+                                                "${recordEvent.error}"
+                                    )
+                                }
+                                viewBinding.videoCaptureButton.apply {
+                                    text = "Start"
+                                    isEnabled = true
+                                }
+                                isTimerRunning = false
+                            }
+                        }
+                    }
+            }
+        }
+        countDownTimer.start()
+
     }
 
     private fun startTimer() {
