@@ -24,15 +24,19 @@
         <activity
             android:name=".ui.resultPage.ResultTranslateActivity"
             android:parentActivityName=".ui.homeActivity.HomeActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.splashActivity.SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.camera.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.homeActivity.HomeActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
