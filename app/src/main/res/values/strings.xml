@@ -14,8 +14,10 @@
     <string name="dictionary_item">item dictionary</string>
     <string name="search">Cari Kata Disini</string>
     <string name="challenge_category_1">Category 1</string>
-    <string name="challenge_category_1_question">Challenge: Category 1</string>
     <string name="challenge_category_2">Category 2</string>
+    <string name="challenge_category_3">Category 3</string>
+    <string name="challenge_category_4">Category 4</string>
+    <string name="challenge_category_1_question">Challenge: Category 1</string>
     <string name="start_challenge">Start ></string>
     <string name="question1">1</string>
     <string name="question2">2</string>
