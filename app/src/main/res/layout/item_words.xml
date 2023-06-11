@@ -21,13 +21,14 @@
             android:layout_marginStart="15dp"
             android:layout_marginBottom="15dp"
             android:text="@string/dictionary_item"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"/>
+
         <ImageButton
-            android:id="@+id/detailButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_play"
+            android:background="@color/white"
             android:layout_gravity="center"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
