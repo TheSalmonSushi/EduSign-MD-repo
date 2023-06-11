@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import android.widget.VideoView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.data.model.Prediction
@@ -25,6 +26,7 @@ class ResultTranslateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         resultTranslateBinding = ActivityResultTranslateBinding.inflate(layoutInflater)
         setContentView(resultTranslateBinding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         videoView = resultTranslateBinding.previewVideo
 
