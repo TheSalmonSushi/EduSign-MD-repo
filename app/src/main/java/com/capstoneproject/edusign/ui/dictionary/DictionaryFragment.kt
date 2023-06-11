@@ -1,60 +1,87 @@
 package com.capstoneproject.edusign.ui.dictionary
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.edusign.R
+import com.capstoneproject.edusign.databinding.FragmentDictionaryBinding
+import androidx.appcompat.widget.SearchView
+import com.capstoneproject.edusign.util.ViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DictionaryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DictionaryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var dictionaryAdapter : DictionaryAdapter
+    private lateinit var dictionaryViewModel: DictionaryViewModel
+
+    private var _binding: FragmentDictionaryBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dictionary, container, false)
+        _binding = FragmentDictionaryBinding.inflate(inflater, container,false)
+        return binding.root
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DictionaryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DictionaryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        dictionaryViewModel = ViewModelProvider(this)[DictionaryViewModel::class.java]
+
+        binding.rvMain.layoutManager = LinearLayoutManager(requireContext())
+        dictionaryAdapter = DictionaryAdapter(emptyList())
+        binding.rvMain.adapter = dictionaryAdapter
+
+        dictionaryViewModel.wordsLiveData.observe(viewLifecycleOwner) { words ->
+            dictionaryAdapter.updateWords(words)
+        }
+
+        dictionaryViewModel.errorLiveData.observe(viewLifecycleOwner) { errorMessage ->
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+        }
+
+        dictionaryViewModel.loadingLiveData.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                // Show loading indicator
+            } else {
+                // Hide loading indicator
             }
+        }
+
+        dictionaryViewModel.fetchWords()
+
+
+        binding.searchView.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                dictionaryAdapter.filter.filter(newText)
+                return true
+            }
+
+        })
+
+
+
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

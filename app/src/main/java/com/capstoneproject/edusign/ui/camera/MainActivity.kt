@@ -1,20 +1,20 @@
 package com.capstoneproject.edusign.ui.camera
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
@@ -38,20 +38,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
 
     private lateinit var countDownTimer: CountDownTimer
-    private lateinit var countDownTimerForDelay: CountDownTimer
     private var isTimerRunning = false
     private var timeRemaining: Long = 0
-    private var delayRemaining: Long = 0
     private val maxTime = 3000
     private val delayInMillis = 5000 // Adjust the delay time as needed (in milliseconds)
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -78,6 +78,14 @@ class MainActivity : AppCompatActivity() {
             viewBinding.videoCaptureButton.isEnabled = false
             captureVideo()
         }
+
+        val restartMainActivity = intent.getBooleanExtra("restartMainActivity", false)
+        if (restartMainActivity) {
+            // Reset the button color and hide the start movement text
+            viewBinding.videoCaptureButton.setBackgroundColor(Color.BLUE)
+            viewBinding.timerText.visibility = View.GONE
+        }
+
 
     }
 
@@ -126,7 +134,6 @@ class MainActivity : AppCompatActivity() {
 
         }, ContextCompat.getMainExecutor(this))
     }
-
 
     private fun captureVideo() {
         val videoCapture = this.videoCapture ?: return
@@ -182,10 +189,18 @@ class MainActivity : AppCompatActivity() {
                                             "$videoUri"
                                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                                     Log.d(TAG, msg)
+                                    viewBinding.videoCaptureButton.apply {
+                                        val buttonColor = getColor(R.color.blue_primary)
+                                        text = "Start"
+                                        setBackgroundColor(buttonColor)
+                                    }
+                                    viewBinding.timerText.visibility = View.GONE
+
                                     val intent = Intent(this@MainActivity, ResultTranslateActivity::class.java)
                                     intent.putExtra("videoUri", videoUri.toString()) // Pass the videoUri as a string
                                     startActivity(intent)
                                     //predict(videoUri)
+
                                 } else {
                                     recording?.close()
                                     recording = null

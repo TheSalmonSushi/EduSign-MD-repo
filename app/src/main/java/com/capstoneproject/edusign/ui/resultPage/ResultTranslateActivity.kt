@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import android.widget.VideoView
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.data.model.Prediction
 import com.capstoneproject.edusign.databinding.ActivityResultTranslateBinding
-import com.capstoneproject.edusign.ui.challenge.ChallengeFragment
+import com.capstoneproject.edusign.ui.camera.MainActivity
 import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
 import com.capstoneproject.edusign.util.ViewModelFactory
 
@@ -18,11 +20,15 @@ class ResultTranslateActivity : AppCompatActivity() {
 
     private lateinit var resultTranslateBinding: ActivityResultTranslateBinding
     private lateinit var viewModel: ResultTranslateViewModel
+    private lateinit var videoView: VideoView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         resultTranslateBinding = ActivityResultTranslateBinding.inflate(layoutInflater)
         setContentView(resultTranslateBinding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        videoView = resultTranslateBinding.previewVideo
 
         val videoUriString = intent.getStringExtra("videoUri")
         val videoUri = Uri.parse(videoUriString)
@@ -49,7 +55,33 @@ class ResultTranslateActivity : AppCompatActivity() {
                 resultTranslateBinding.translateResult.visibility = View.VISIBLE
             }
         }
+
+        // for video preview
+        videoView.setVideoURI(videoUri)
+        videoView.start()
+        // Loop the video playback
+        videoView.setOnCompletionListener { mediaPlayer ->
+            mediaPlayer.start()
+            mediaPlayer.isLooping = true
+        }
+
+        resultTranslateBinding.restartVideo.setOnClickListener {
+            val intent = Intent(this@ResultTranslateActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            intent.putExtra("restartMainActivity", true)
+            startActivity(intent)
+        }
+
+
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Release the resources used by the VideoView
+        videoView.stopPlayback()
+    }
+
+
 
     override fun onBackPressed() {
         val intent = Intent(this, HomeActivity::class.java)

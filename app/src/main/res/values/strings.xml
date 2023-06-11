@@ -10,6 +10,7 @@
     <string name="ambil_ulang_video">Ambil Ulang video</string>
     <string name="hasil_terjemahan">Hasil Terjemahan</string>
     <string name="terjemahan">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam felis enim, hendrerit ut felis id, ultrices posuere augue. Phasellus a suscipit erat. Suspendisse ac iaculis eros, et finibus justo. Vivamus consectetur est nibh, ut suscipit nulla convallis sed. Integer pretium metus vel libero feugiat, vitae sodales risus cursus. Vivamus vestibulum congue tortor, id pellentesque erat varius et. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla facilisi.</string>
+    <string name="Error">Gagal Mengambil Data</string>
     <string name="dictionary_item">item dictionary</string>
     <string name="search">Cari Kata Disini</string>
     <string name="challenge_category_1">Category 1</string>

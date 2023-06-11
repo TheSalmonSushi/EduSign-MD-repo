@@ -3,6 +3,7 @@ package com.capstoneproject.edusign.ui.homeActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.databinding.ActivityHomeBinding
@@ -21,6 +22,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         homeActivityBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(homeActivityBinding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         fragmentChallenge = ChallengeFragment()
         fragmentSwitch(fragmentChallenge!!)

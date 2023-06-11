@@ -19,12 +19,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
+        <VideoView
+            android:id="@+id/previewVideo"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="300dp"
             android:padding="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="40dp"
+            android:layout_gravity="center"
             android:src="@drawable/video_test"
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="-1dp" />
@@ -42,6 +44,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Button
+            android:id="@+id/restartVideo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -70,7 +73,7 @@
             android:id="@+id/translateResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/terjemahan"
+            android:text="@string/Error"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:textSize="22sp"

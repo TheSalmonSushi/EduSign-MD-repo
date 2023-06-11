@@ -21,6 +21,7 @@ class ApiConfig {
                 .readTimeout(60, TimeUnit.SECONDS) // Read timeout
                 .build()
             val retrofit = Retrofit.Builder()
+                //.baseUrl(// Jika type = baseurl1 load url 1 // jika type = baseurl2 load url 2)
                 .baseUrl("https://flaskapp-cr-v1-cky5j3e4sq-et.a.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
