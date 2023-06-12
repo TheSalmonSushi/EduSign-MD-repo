@@ -90,11 +90,15 @@
                         android:textSize="30sp" />
 
                     <Button
+                        android:id="@+id/buttonCat1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_margin="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
                         android:backgroundTint="@color/blue_secondary"
                         android:text="@string/start_challenge"
                         android:textColor="@color/white" />
@@ -134,15 +138,15 @@
                         android:textSize="30sp" />
 
                     <Button
+                        android:id="@+id/buttonCat2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_margin="15dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
                         android:backgroundTint="@color/blue_secondary"
                         android:text="@string/start_challenge"
                         android:textColor="@color/white" />
@@ -183,15 +187,15 @@
                         android:textSize="30sp" />
 
                     <Button
+                        android:id="@+id/buttonCat3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_margin="15dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
                         android:backgroundTint="@color/blue_secondary"
                         android:text="@string/start_challenge"
                         android:textColor="@color/white" />
@@ -232,15 +236,15 @@
                         android:textSize="30sp" />
 
                     <Button
+                        android:id="@+id/buttonCat4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_margin="15dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="15dp"
                         android:backgroundTint="@color/blue_secondary"
                         android:text="@string/start_challenge"
                         android:textColor="@color/white" />

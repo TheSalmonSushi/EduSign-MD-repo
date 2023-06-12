@@ -15,6 +15,7 @@ import com.capstoneproject.edusign.databinding.ActivityResultTranslateBinding
 import com.capstoneproject.edusign.ui.camera.MainActivity
 import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
 import com.capstoneproject.edusign.util.ViewModelFactory
+import java.io.File
 
 class ResultTranslateActivity : AppCompatActivity() {
 
@@ -109,6 +110,24 @@ class ResultTranslateActivity : AppCompatActivity() {
 //        val predictionsString = numberedPredictions.joinToString("\n")
 //
 //        resultTranslateBinding.translateResult.text = predictionsString
+
+        // Delete video file
+        val videoUriString = intent.getStringExtra("videoUri")
+        val videoFile = File(videoUriString)
+        deleteVideoFile(videoFile)
+
+    }
+
+    private fun deleteVideoFile(videoFile: File) {
+        if (videoFile.exists()) {
+            if (videoFile.delete()) {
+                // File deleted successfully
+                Toast.makeText(this, "Video file deleted", Toast.LENGTH_SHORT).show()
+            } else {
+                // Failed to delete the file
+                Toast.makeText(this, "Failed to delete video file", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun handleErrorMessage(error: String) {
