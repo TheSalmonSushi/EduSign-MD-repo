@@ -17,8 +17,8 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/capstone_logo_only"
-        android:roundIcon="@drawable/capstone_logo_only"
+        android:icon="@drawable/edusign_logo_only"
+        android:roundIcon="@drawable/edusign_logo_only"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.EduSign"
         tools:targetApi="31">
