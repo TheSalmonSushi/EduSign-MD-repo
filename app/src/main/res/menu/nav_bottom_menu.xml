@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/navigation_challenge"
-        android:icon="@drawable/edusign_logo"
+        android:icon="@drawable/ic_challenge"
         android:title="@string/menu_title_bottom_nav_home"
         app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/navigation_dictionary"
-        android:icon="@drawable/edusign_logo"
+        android:icon="@drawable/ic_dictionary"
         android:title="@string/menu_title_bottom_nav_dictionary"
         app:showAsAction="ifRoom"
         />
