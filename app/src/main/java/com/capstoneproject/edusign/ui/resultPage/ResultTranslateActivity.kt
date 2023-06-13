@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatDelegate
@@ -26,6 +27,7 @@ class ResultTranslateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         resultTranslateBinding = ActivityResultTranslateBinding.inflate(layoutInflater)
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         setContentView(resultTranslateBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
@@ -33,6 +35,7 @@ class ResultTranslateActivity : AppCompatActivity() {
 
         val videoUriString = intent.getStringExtra("videoUri")
         val videoUri = Uri.parse(videoUriString)
+
 
         val viewModelFactory = ViewModelFactory(application)
         viewModel = ViewModelProvider(this, viewModelFactory)[ResultTranslateViewModel::class.java]

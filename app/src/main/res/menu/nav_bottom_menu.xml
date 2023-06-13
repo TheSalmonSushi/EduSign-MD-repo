@@ -12,7 +12,7 @@
     <item
         android:id="@+id/navigation_dictionary"
         android:icon="@drawable/edusign_logo"
-        android:title="@string/menu_title_bottom_nav_home"
+        android:title="@string/menu_title_bottom_nav_dictionary"
         app:showAsAction="ifRoom"
         />
 

@@ -13,6 +13,7 @@
         android:maxSdkVersion="28" />
 
     <application
+        android:label="Edu Sign"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,20 +23,33 @@
         android:theme="@style/Base.Theme.EduSign"
         tools:targetApi="31">
         <activity
+            android:name=".ui.cameraChallenge.CameraChallengeResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.cameraChallenge.CameraForChallenge"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.challenge.ActivityDetailChallenge4"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.challenge.ActivityDetailChallenge3"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.challenge.ActivityDetailChallenge2"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.challenge.ActivityDetailChallenge"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.dictionaryDetail.DictionaryDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.resultPage.ResultTranslateActivity"
             android:exported="false"
