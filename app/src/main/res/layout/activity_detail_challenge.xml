@@ -26,22 +26,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/challenge_category_1_question"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/white"
             android:gravity="center"/>
 
-
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="40dp"
             android:gravity="center"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:paddingBottom="30dp"
             android:src="@drawable/video_test"
-            android:text="Gajah"
+            android:text="@string/gajah"
             android:textSize="70sp"
             tools:layout_editor_absoluteX="1dp"
             tools:layout_editor_absoluteY="-1dp" />

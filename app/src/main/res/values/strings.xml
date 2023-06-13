@@ -39,4 +39,8 @@
     <string name="challenge_introduction">challenge ini berisi tentang blablablabla</string>
     <string name="kembali">kembali</string>
     <string name="mulai">mulai</string>
+    <string name="coba_lagi">coba lagi</string>
+    <string name="jawaban_benar">Jawaban anda benar</string>
+    <string name="jawaban_salah">Jawaban anda salah</string>
+    <string name="gajah">Gajah</string>
 </resources>
