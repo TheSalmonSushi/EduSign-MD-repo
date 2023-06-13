@@ -75,28 +75,39 @@
             android:layout_gravity="center"
             android:gravity="center"/>
 
-        <Button
-            android:id="@+id/benarShow"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/black"
-            android:text="BENAR"
-            android:textColor="@color/white"/>
+            android:gravity="center">
 
-        <Button
-            android:id="@+id/salahShow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/black"
-            android:text="SALAH"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <Button
+                android:id="@+id/benarShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/black"
+                android:text="BENAR"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/salahShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:backgroundTint="@color/black"
+                android:text="SALAH"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
 
         <!--
 
