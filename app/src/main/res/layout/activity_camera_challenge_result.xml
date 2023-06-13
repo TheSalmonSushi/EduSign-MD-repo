@@ -45,20 +45,11 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/restartVideo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/blue_primary"
-            android:text="@string/ambil_ulang_video"/>
-
         <TextView
             android:id="@+id/hasilTest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:text="@string/hasil_terjemahan"
             android:textSize="30sp"
@@ -93,9 +84,7 @@
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/black"
             android:text="BENAR"
-            android:visibility="gone"
             android:textColor="@color/white"/>
-
 
         <Button
             android:id="@+id/salahShow"
@@ -104,13 +93,24 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
-            android:visibility="gone"
             android:backgroundTint="@color/black"
             android:text="SALAH"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
+        <!--
 
+                    android:visibility="gone"
+        -->
+        <Button
+            android:id="@+id/restartVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/blue_primary"
+            android:text="@string/ambil_ulang_video"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
