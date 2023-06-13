@@ -7,7 +7,6 @@
     android:fitsSystemWindows="true"
     android:clipToPadding="false"
     tools:context=".ui.challenge.ActivityDetailChallenge4">
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -25,26 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/challenge_category_1_question"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/white"
             android:gravity="center"/>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="40dp"
-            android:paddingBottom="30dp"
-            android:text="Ibu"
-            android:gravity="center"
-            android:textSize="70sp"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:src="@drawable/video_test"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="-1dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -57,21 +42,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.431">
 
-        <Button
-            android:id="@+id/peragakanButton"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/blue_primary"
-            android:text="@string/answer_a"
-            android:textSize="16sp"
-            android:textColor="@color/white" />
-
-
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
+            android:src="@drawable/video_test"
+            android:text="@string/ibu"
+            android:textSize="70sp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="-1dp" />
 
 
     </LinearLayout>
@@ -87,7 +70,17 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="1.0">
 
-
+        <Button
+            android:id="@+id/peragakanButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/white"
+            android:text="@string/answer"
+            android:textSize="16sp"
+            android:textColor="@color/blue_primary"
+            android:layout_gravity="center"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

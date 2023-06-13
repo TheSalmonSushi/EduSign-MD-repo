@@ -24,10 +24,7 @@
     <string name="question3">3</string>
     <string name="question4">4</string>
     <string name="question5">5</string>
-    <string name="answer_a">PERAGAKAN</string>
-    <string name="answer_b">option B</string>
-    <string name="answer_c">option C</string>
-    <string name="answer_d">option D</string>
+    <string name="answer">Peragakan</string>
     <string name="next">next ></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="progress">progress</string>
@@ -43,4 +40,7 @@
     <string name="jawaban_benar">Jawaban anda benar</string>
     <string name="jawaban_salah">Jawaban anda salah</string>
     <string name="gajah">Gajah</string>
+    <string name="lengan">Lengan</string>
+    <string name="biru">Biru</string>
+    <string name="ibu">Ibu</string>
 </resources>
