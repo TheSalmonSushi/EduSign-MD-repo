@@ -8,14 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.edusign.R
+import com.capstoneproject.edusign.data.model.ChallengePicture
 import com.capstoneproject.edusign.databinding.FragmentChallengeBinding
 
 
-class ChallengeFragment : Fragment() {
+class ChallengeFragment : Fragment(), ChallengeAdapter.OnItemClickCallback {
 
     private var _binding: FragmentChallengeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var challengeAdapter: ChallengeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,42 +26,65 @@ class ChallengeFragment : Fragment() {
     ): View? {
 
         _binding = FragmentChallengeBinding.inflate(inflater, container, false)
-        return binding.root
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindButtons()
+
+        // Set up the RecyclerView and adapter
+        challengeAdapter = ChallengeAdapter(ArrayList())
+        challengeAdapter.setOnitemClickCallback(this)
+        binding.rvMain.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvMain.adapter = challengeAdapter
+
+        // Prepare the data for the adapter and set it
+        val challengeList = getChallengeList()
+        challengeAdapter.setChallengeData(challengeList)
+
     }
 
 
-    private fun bindButtons() {
-        binding.buttonCat1.setOnClickListener {
-            val intent = Intent(activity, ActivityDetailChallenge::class.java)
-            startActivity(intent)
-        }
-
-        binding.buttonCat2.setOnClickListener {
-            val intent = Intent(activity, ActivityDetailChallenge2::class.java)
-            startActivity(intent)
-        }
-
-        binding.buttonCat3.setOnClickListener {
-            val intent = Intent(activity, ActivityDetailChallenge3::class.java)
-            startActivity(intent)
-        }
-
-        binding.buttonCat4.setOnClickListener {
-            val intent = Intent(activity, ActivityDetailChallenge4::class.java)
-            startActivity(intent)
-        }
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+    override fun onItemClicked(data: ChallengePicture) {
+        val intent: Intent
+        when (data.name) {
+            "Hewan" -> {
+                intent = Intent(requireContext(), ActivityDetailChallenge::class.java)
+            }
+            "Anggota Tubuh" -> {
+                intent = Intent(requireContext(), ActivityDetailChallenge2::class.java)
+            }
+            "Warna" -> {
+                intent = Intent(requireContext(), ActivityDetailChallenge3::class.java)
+            }
+            "Keluarga" -> {
+                intent = Intent(requireContext(), ActivityDetailChallenge4::class.java)
+            }
+            else -> return
+        }
+        startActivity(intent)
+    }
 
+    private fun getChallengeList(): ArrayList<ChallengePicture> {
+        val challengeList = ArrayList<ChallengePicture>()
+        val photoArray = resources.obtainTypedArray(R.array.data_photo)
+        val nameArray = resources.getStringArray(R.array.data_name)
 
+        for (i in 0 until nameArray.size) {
+            val photoResId = photoArray.getResourceId(i, 0)
+            val challenge = ChallengePicture(nameArray[i], photoResId)
+            challengeList.add(challenge)
+        }
+
+        photoArray.recycle()
+
+        return challengeList
+    }
 }

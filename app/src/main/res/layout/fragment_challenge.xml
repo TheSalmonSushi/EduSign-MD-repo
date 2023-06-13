@@ -24,7 +24,7 @@
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="15dp"
+            android:layout_margin="20dp"
             android:gravity="center"
             android:text="@string/challenge"
             android:textColor="@color/white"
@@ -33,225 +33,22 @@
             android:layout_width="123dp"
             android:layout_height="126dp"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
             android:src="@drawable/challenge" />
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:paddingBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.036"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintVertical_bias="1.0" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layout_constraintVertical_bias="0.473">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/rounded_rectangle">
-
-                    <ImageView
-                        android:id="@+id/image_category_1"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/challenge_category_1" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="68dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@+id/image_category_1"
-                        android:text="@string/challenge_category_1"
-                        android:textColor="@color/white"
-                        android:textSize="30sp" />
-
-                    <Button
-                        android:id="@+id/buttonCat1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:backgroundTint="@color/blue_secondary"
-                        android:text="@string/start_challenge"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/rounded_rectangle">
-
-                    <ImageView
-                        android:id="@+id/image_category_2"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/challenge_category_2" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="68dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@+id/image_category_2"
-                        android:text="@string/challenge_category_2"
-                        android:textColor="@color/white"
-                        android:textSize="30sp" />
-
-                    <Button
-                        android:id="@+id/buttonCat2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:backgroundTint="@color/blue_secondary"
-                        android:text="@string/start_challenge"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/rounded_rectangle">
-
-                    <ImageView
-                        android:id="@+id/image_category_3"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/challenge_category_3" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="68dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@+id/image_category_3"
-                        android:text="@string/challenge_category_3"
-                        android:textColor="@color/white"
-                        android:textSize="30sp" />
-
-                    <Button
-                        android:id="@+id/buttonCat3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:backgroundTint="@color/blue_secondary"
-                        android:text="@string/start_challenge"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/rounded_rectangle">
-
-                    <ImageView
-                        android:id="@+id/image_category_4"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:src="@drawable/challenge_category_4" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="68dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@+id/image_category_4"
-                        android:text="@string/challenge_category_4"
-                        android:textColor="@color/white"
-                        android:textSize="30sp" />
-
-                    <Button
-                        android:id="@+id/buttonCat4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:backgroundTint="@color/blue_secondary"
-                        android:text="@string/start_challenge"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

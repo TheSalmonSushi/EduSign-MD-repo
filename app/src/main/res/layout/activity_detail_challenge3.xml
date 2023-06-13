@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="false"
     tools:context=".ui.challenge.ActivityDetailChallenge3">
 
     <LinearLayout
@@ -20,16 +18,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
         <TextView
             android:id="@+id/quizCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="60dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textStyle="bold"
+            android:gravity="center"
             android:text="@string/challenge_category_1_question"
-            android:textSize="25sp"
             android:textColor="@color/white"
-            android:gravity="center"/>
+            android:textSize="25sp" />
 
     </LinearLayout>
 
@@ -52,6 +54,7 @@
             android:layout_marginBottom="40dp"
             android:gravity="center"
             android:src="@drawable/video_test"
+            android:textStyle="bold"
             android:text="@string/biru"
             android:textSize="70sp"
             tools:layout_editor_absoluteX="1dp"

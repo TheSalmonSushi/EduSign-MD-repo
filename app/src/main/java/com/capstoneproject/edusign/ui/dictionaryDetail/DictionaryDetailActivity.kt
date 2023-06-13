@@ -33,6 +33,8 @@ class DictionaryDetailActivity : AppCompatActivity() {
         val videoLink = intent.getStringExtra("videoLink")
         val videoUri = Uri.parse(videoLink)
 
+        val dictionaryWord = intent.getStringExtra("dictWord")
+
         // Initialize the ExoPlayer
         val trackSelector = DefaultTrackSelector(this)
         val loadControl = DefaultLoadControl()
@@ -46,6 +48,8 @@ class DictionaryDetailActivity : AppCompatActivity() {
         val mediaDataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, userAgent)
         val mediaSource: MediaSource = ProgressiveMediaSource.Factory(mediaDataSourceFactory)
             .createMediaSource(videoUri)
+
+        detailActivityBinding.dictionaryWord.text = dictionaryWord
 
         // Set the player to the PlayerView
         detailActivityBinding.playerView.player = player

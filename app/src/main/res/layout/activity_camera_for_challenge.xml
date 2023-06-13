@@ -47,6 +47,7 @@
         android:textColor="@color/white"
         android:visibility="gone"
         android:textStyle="bold"
+        android:gravity="center"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

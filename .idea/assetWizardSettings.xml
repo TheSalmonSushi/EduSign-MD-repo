@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="0080ff" />
-                            <entry key="outputName" value="baseline_play_arrow_24" />
-                            <entry key="sourceFile" value="D:\Project Thes (Thes-X2)\Project MURTAD (BANGKIT GES)\CAPSTONE\EDUSING-CAPBATU-MD\repos\EduSign-MD-repo" />
+                            <entry key="outputName" value="ic_no" />
+                            <entry key="sourceFile" value="D:\Project Thes (Thes-X2)\Project MURTAD (BANGKIT GES)\CAPSTONE\EDUSING-CAPBATU-MD\repos\New folder\ic_no.svg" />
                           </map>
                         </option>
                       </PersistentState>

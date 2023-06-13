@@ -90,7 +90,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_benar"/>
+                    android:src="@drawable/ic_yes"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_salah"/>
+                    android:src="@drawable/ic_no"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

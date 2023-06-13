@@ -47,32 +47,21 @@
         app:layout_constraintVertical_bias="0.0">
 
 
-
         <TextView
             android:id="@+id/dictionaryWord"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/blue_primary"
-            android:text="@string/answer_b"
-            android:textSize="20sp"
-            android:textColor="@color/white" />
+            android:gravity="center"
+            android:text="@string/Error"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="65sp" />
 
     </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/blue_primary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="1.0">
-
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

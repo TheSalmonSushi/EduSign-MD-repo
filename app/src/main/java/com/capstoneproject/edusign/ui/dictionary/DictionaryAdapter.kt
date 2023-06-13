@@ -1,5 +1,6 @@
 package com.capstoneproject.edusign.ui.dictionary
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -20,9 +21,11 @@ class DictionaryAdapter(private var dictionaryList: List<UserDictionaryResponse>
 
             itemWordsBinding.detailButton.setOnClickListener {
                 val videoLink = dictionary.link
+                val dictionaryWord = dictionary.name
                 if (!videoLink.isNullOrEmpty()) {
                     val intent = Intent(itemWordsBinding.root.context, DictionaryDetailActivity::class.java)
                     intent.putExtra("videoLink", videoLink)
+                    intent.putExtra("dictWord", dictionaryWord)
                     itemWordsBinding.root.context.startActivity(intent)
                 }
             }
@@ -45,6 +48,7 @@ class DictionaryAdapter(private var dictionaryList: List<UserDictionaryResponse>
         holder.bind(word)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateWords(newWords: List<UserDictionaryResponse>) {
         dictionaryList = newWords.sortedBy { it.name }
         filteredDictionaryList = newWords.sortedBy { it.name }
@@ -74,6 +78,7 @@ class DictionaryAdapter(private var dictionaryList: List<UserDictionaryResponse>
                 return filterResults
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 filteredDictionaryList = results?.values as List<UserDictionaryResponse>
                 notifyDataSetChanged()

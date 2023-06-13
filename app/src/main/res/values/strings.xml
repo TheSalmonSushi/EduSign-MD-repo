@@ -6,7 +6,7 @@
     <string name="menu_title_bottom_nav_dictionary">Dictionary</string>
     <string name="menu_title_blank" translatable="false">" "</string>
     <string name="menu_title_bottom_nav_library">DICTIONARY</string>
-    <string name="challenge">Challenge yourself with this quiz now!</string>
+    <string name="challenge">Selamat datang di EduSign</string>
     <string name="ambil_ulang_video">Ambil Ulang video</string>
     <string name="hasil_terjemahan">Hasil Terjemahan</string>
     <string name="terjemahan">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam felis enim, hendrerit ut felis id, ultrices posuere augue. Phasellus a suscipit erat. Suspendisse ac iaculis eros, et finibus justo. Vivamus consectetur est nibh, ut suscipit nulla convallis sed. Integer pretium metus vel libero feugiat, vitae sodales risus cursus. Vivamus vestibulum congue tortor, id pellentesque erat varius et. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla facilisi.</string>
@@ -17,7 +17,7 @@
     <string name="challenge_category_2">Anggota Tubuh</string>
     <string name="challenge_category_3">Warna</string>
     <string name="challenge_category_4">Keluarga</string>
-    <string name="challenge_category_1_question">Peragakan Gerakan untuk kata dibawah</string>
+    <string name="challenge_category_1_question">Peragakan Gerakan untuk kata di bawah</string>
     <string name="start_challenge">Start ></string>
     <string name="question1">1</string>
     <string name="question2">2</string>
@@ -42,5 +42,27 @@
     <string name="gajah">Gajah</string>
     <string name="lengan">Lengan</string>
     <string name="biru">Biru</string>
-    <string name="ibu">Ibu</string>
+    <string name="ibu">Nenek</string>
+
+
+    <integer-array name="data_photo">
+        <item>@drawable/category1_animal</item>
+        <item>@drawable/category2_body_parts</item>
+        <item>@drawable/category3_warna</item>
+        <item>@drawable/category4_keluarga</item>
+        <item>@drawable/category5_jobs</item>
+        <item>@drawable/category6_sapaan</item>
+    </integer-array>
+
+
+    <string-array name="data_name">
+        <item>Hewan</item>
+        <item>Anggota Tubuh</item>
+        <item>Warna</item>
+        <item>Keluarga</item>
+        <item>Pekerjaan</item>
+        <item>Sapaan</item>
+    </string-array>
+
+
 </resources>

@@ -1,26 +1,23 @@
 package com.capstoneproject.edusign.ui.dictionary
 
-import android.content.Context
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.databinding.FragmentDictionaryBinding
 import androidx.appcompat.widget.SearchView
-import com.capstoneproject.edusign.util.ViewModelFactory
 
 
 class DictionaryFragment : Fragment() {
 
-    private lateinit var dictionaryAdapter : DictionaryAdapter
+    private lateinit var dictionaryAdapter: DictionaryAdapter
     private lateinit var dictionaryViewModel: DictionaryViewModel
 
     private var _binding: FragmentDictionaryBinding? = null
@@ -29,10 +26,12 @@ class DictionaryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentDictionaryBinding.inflate(inflater, container,false)
-        return binding.root
+    ): View {
+        _binding = FragmentDictionaryBinding.inflate(inflater, container, false)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,16 +53,16 @@ class DictionaryFragment : Fragment() {
 
         dictionaryViewModel.loadingLiveData.observe(viewLifecycleOwner) { isLoading ->
             if (isLoading) {
-                // Show loading indicator
+                binding.progressBar.visibility = View.VISIBLE
             } else {
-                // Hide loading indicator
+                binding.progressBar.visibility = View.INVISIBLE
             }
         }
 
         dictionaryViewModel.fetchWords()
 
 
-        binding.searchView.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -74,7 +73,6 @@ class DictionaryFragment : Fragment() {
             }
 
         })
-
 
 
     }

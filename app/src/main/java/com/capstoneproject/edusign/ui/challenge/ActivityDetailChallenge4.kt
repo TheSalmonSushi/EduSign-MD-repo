@@ -21,7 +21,7 @@ class ActivityDetailChallenge4 : AppCompatActivity() {
 
         binding.peragakanButton.setOnClickListener {
             val intent = Intent(this@ActivityDetailChallenge4, CameraForChallenge::class.java)
-            intent.putExtra("challenge", "ibu")
+            intent.putExtra("challenge", "nenek")
             startActivity(intent)
         }
     }
