@@ -18,14 +18,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/dictionary_item"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
+                android:fontFamily="@font/bevietnampro_bold"
                 android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/detailButton"
-                app:layout_constraintHorizontal_bias="0.055"
+                app:layout_constraintHorizontal_bias="0.573"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView

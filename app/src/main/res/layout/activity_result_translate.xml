@@ -51,6 +51,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
+            android:fontFamily="@font/bevietnampro_extrabold"
             android:backgroundTint="@color/blue_primary"
             android:text="@string/ambil_ulang_video"/>
 
@@ -60,6 +61,7 @@
             android:layout_marginBottom="15dp"
             android:text="@string/hasil_terjemahan"
             android:textSize="30sp"
+            android:fontFamily="@font/bevietnampro_bold"
             android:layout_gravity="center"
             android:textStyle="bold" />
 
@@ -70,18 +72,18 @@
             android:layout_gravity="center"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/translateResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/Error"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:textSize="22sp"
-            android:layout_gravity="center"
-            android:gravity="center"/>
-
-
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/translateResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/bevietnampro_light"
+        android:gravity="center"
+        android:text="@string/Error"
+        android:textSize="22sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="562dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,8 @@
     <string name="menu_title_bottom_nav_dictionary">Dictionary</string>
     <string name="menu_title_blank" translatable="false">" "</string>
     <string name="menu_title_bottom_nav_library">DICTIONARY</string>
-    <string name="challenge">Selamat datang di EduSign</string>
+    <string name="challenge">Selamat datang di </string>
+    <string name= "edusign">EduSign</string>
     <string name="ambil_ulang_video">Ambil Ulang video</string>
     <string name="hasil_terjemahan">Hasil Terjemahan</string>
     <string name="terjemahan">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam felis enim, hendrerit ut felis id, ultrices posuere augue. Phasellus a suscipit erat. Suspendisse ac iaculis eros, et finibus justo. Vivamus consectetur est nibh, ut suscipit nulla convallis sed. Integer pretium metus vel libero feugiat, vitae sodales risus cursus. Vivamus vestibulum congue tortor, id pellentesque erat varius et. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla facilisi.</string>
@@ -57,7 +58,7 @@
 
     <string-array name="data_name">
         <item>Hewan</item>
-        <item>Anggota Tubuh</item>
+        <item>Anggota \nTubuh</item>
         <item>Warna</item>
         <item>Keluarga</item>
         <item>Pekerjaan</item>

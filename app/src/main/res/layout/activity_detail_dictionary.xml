@@ -60,8 +60,8 @@
             android:text="@string/Error"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="65sp" />
-
+            android:fontFamily="@font/bevietnampro_bold"
+            android:textSize="60sp"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
