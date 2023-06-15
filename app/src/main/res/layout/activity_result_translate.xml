@@ -72,18 +72,18 @@
             android:layout_gravity="center"
             android:visibility="gone" />
 
+        <TextView
+            android:id="@+id/translateResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bevietnampro_light"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="@string/Error"
+            android:textSize="22sp" />
+
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/translateResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/bevietnampro_light"
-        android:gravity="center"
-        android:text="@string/Error"
-        android:textSize="22sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="562dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
