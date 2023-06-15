@@ -75,7 +75,7 @@ To make use of this repository, the software and hardware should meet these prer
  you can try somw of this features in the EduSign application:
 
 * Sign Language Translate with Video Camera: You can use this feature to translate your sign language movement to text using Video Processing. 
-* Challenges based on categoty: With this feature you can try to do the sing language challenge based on the available category. Use this to improve your movement accuracy and to test your knowledge on sign language.
+* Challenges based on categoty: With this feature you can try to do the sign language challenge based on the available category. Use this to improve your movement accuracy and to test your knowledge on sign language.
 * A Dictionary of sign language word: You can use the Dictionary feature to search the sign language for the word you are looking for. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
