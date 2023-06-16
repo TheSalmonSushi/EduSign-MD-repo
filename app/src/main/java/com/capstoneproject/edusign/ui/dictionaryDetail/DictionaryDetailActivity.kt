@@ -1,18 +1,21 @@
 package com.capstoneproject.edusign.ui.dictionaryDetail
 
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.net.Uri
 import android.os.Bundle
+import android.os.IBinder
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.databinding.ActivityDetailDictionaryBinding
-import com.google.android.exoplayer2.DefaultLoadControl
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 
@@ -21,6 +24,20 @@ class DictionaryDetailActivity : AppCompatActivity() {
 
     private lateinit var detailActivityBinding: ActivityDetailDictionaryBinding
     private lateinit var player: SimpleExoPlayer
+    private lateinit var videoPlaybackService: VideoPlaybackService
+    private var isServiceBound = false
+
+    private val serviceConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+            val binder = service as VideoPlaybackService.LocalBinder
+            videoPlaybackService = binder.getService()
+            isServiceBound = true
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            isServiceBound = false
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,34 +54,43 @@ class DictionaryDetailActivity : AppCompatActivity() {
 
         val dictionaryWord = intent.getStringExtra("dictWord")
 
-        // Initialize the ExoPlayer
         val trackSelector = DefaultTrackSelector(this)
-        val loadControl = DefaultLoadControl()
         player = SimpleExoPlayer.Builder(this)
             .setTrackSelector(trackSelector)
-            .setLoadControl(loadControl)
             .build()
 
-        // Prepare the MediaSource
+        player.repeatMode = Player.REPEAT_MODE_ALL
+
         val userAgent = Util.getUserAgent(this, getString(R.string.app_name))
-        val mediaDataSourceFactory: DataSource.Factory = DefaultDataSourceFactory(this, userAgent)
-        val mediaSource: MediaSource = ProgressiveMediaSource.Factory(mediaDataSourceFactory)
+        val mediaDataSourceFactory = DefaultDataSourceFactory(this, userAgent)
+        val mediaSource = ProgressiveMediaSource.Factory(mediaDataSourceFactory)
             .createMediaSource(videoUri)
 
         detailActivityBinding.dictionaryWord.text = dictionaryWord
 
-        // Set the player to the PlayerView
         detailActivityBinding.playerView.player = player
 
-        // Prepare the MediaSource and start playback
         player.setMediaSource(mediaSource)
         player.prepare()
         player.play()
     }
 
+    override fun onStart() {
+        super.onStart()
+        val serviceIntent = Intent(this, VideoPlaybackService::class.java)
+        bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE)
+    }
+
     override fun onStop() {
         super.onStop()
-        // Release the player when the activity is stopped
+        if (isServiceBound) {
+            unbindService(serviceConnection)
+            isServiceBound = false
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
         player.release()
     }
 }
