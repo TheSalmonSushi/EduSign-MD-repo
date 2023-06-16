@@ -1,5 +1,6 @@
 package com.capstoneproject.edusign.ui.cameraChallenge
 
+import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.data.model.Prediction
 import com.capstoneproject.edusign.databinding.ActivityCameraChallengeResultBinding
 import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
+import com.capstoneproject.edusign.ui.resultPage.ResultTranslateVideoService
 import com.capstoneproject.edusign.ui.resultPage.ResultTranslateViewModel
 import com.capstoneproject.edusign.util.ViewModelFactory
 
@@ -22,6 +24,8 @@ class CameraChallengeResultActivity : AppCompatActivity() {
     private lateinit var resultTranslateBinding: ActivityCameraChallengeResultBinding
     private lateinit var viewModel: ResultTranslateViewModel
     private lateinit var videoView: VideoView
+    private lateinit var videoPlaybackServiceIntent: Intent
+    private var currentPosition: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,13 +66,37 @@ class CameraChallengeResultActivity : AppCompatActivity() {
             }
         }
 
-        // for video preview
+
         videoView.setVideoURI(videoUri)
-        videoView.start()
-        // Loop the video playback
-        videoView.setOnCompletionListener { mediaPlayer ->
+        videoView.setOnPreparedListener { mediaPlayer ->
+            mediaPlayer.setOnVideoSizeChangedListener { _, _, _ ->
+
+                val videoWidth = mediaPlayer.videoWidth
+                val videoHeight = mediaPlayer.videoHeight
+                val videoProportion = videoWidth.toFloat() / videoHeight.toFloat()
+
+
+                val screenWidth = videoView.width
+                val screenHeight = videoView.height
+                val screenProportion = screenWidth.toFloat() / screenHeight.toFloat()
+
+
+                val videoParams = videoView.layoutParams
+                if (videoProportion > screenProportion) {
+                    videoParams.width = screenWidth
+                    videoParams.height = (screenWidth / videoProportion).toInt()
+                } else {
+                    videoParams.width = (videoProportion * screenHeight).toInt()
+                    videoParams.height = screenHeight
+                }
+                videoView.layoutParams = videoParams
+            }
+            mediaPlayer.setOnCompletionListener { mediaPlayer ->
+                mediaPlayer.start()
+                mediaPlayer.isLooping = true
+            }
+            mediaPlayer.seekTo(currentPosition)
             mediaPlayer.start()
-            mediaPlayer.isLooping = true
         }
 
         resultTranslateBinding.restartVideo.setOnClickListener {
@@ -78,17 +106,44 @@ class CameraChallengeResultActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        videoPlaybackServiceIntent = Intent(this, ResultTranslateVideoService::class.java)
+        videoPlaybackServiceIntent.putExtra("videoUri", videoUriString)
+        startService(videoPlaybackServiceIntent)
 
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (videoView.isPlaying) {
+            videoView.pause()
+            currentPosition = videoView.currentPosition
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!videoView.isPlaying) {
+            videoView.seekTo(currentPosition)
+            videoView.start()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // Release the resources used by the VideoView
+        stopService(videoPlaybackServiceIntent)
         videoView.stopPlayback()
     }
 
 
+
     override fun onBackPressed() {
+        val videoUriString = intent.getStringExtra("videoUri")
+        val videoUri = Uri.parse(videoUriString)
+
+        val contentResolver: ContentResolver = contentResolver
+        contentResolver.delete(videoUri, null, null)
+
         val intent = Intent(this, HomeActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         intent.putExtra("selectedFragment", R.id.navigation_challenge)
@@ -106,7 +161,6 @@ class CameraChallengeResultActivity : AppCompatActivity() {
         val formattedResult = "$firstPrediction"
         resultTranslateBinding.translateResult.text = formattedResult
 
-        // Intent 2
         val receivedString = intent.getStringExtra("challengePassing")
 
         if (formattedResult == receivedString) {

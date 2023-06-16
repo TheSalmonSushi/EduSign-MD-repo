@@ -41,7 +41,7 @@ class CameraForChallenge : AppCompatActivity() {
     private var isTimerRunning = false
     private var timeRemaining: Long = 0
     private val maxTime = 3000
-    private val delayInMillis = 5000 // Adjust the delay time as needed (in milliseconds)
+    private val delayInMillis = 5000
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
@@ -58,7 +58,7 @@ class CameraForChallenge : AppCompatActivity() {
         setContentView(viewBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        // Request camera permissions
+
         if (allPermissionsGranted()) {
             startCamera()
         } else {
@@ -86,7 +86,6 @@ class CameraForChallenge : AppCompatActivity() {
 
         val restartMainActivity = intent.getBooleanExtra("restartMainActivity", false)
         if (restartMainActivity) {
-            // Reset the button color and hide the start movement text
             viewBinding.videoCaptureButton.setBackgroundColor(Color.BLUE)
             viewBinding.timerText.visibility = View.GONE
         }
@@ -108,10 +107,10 @@ class CameraForChallenge : AppCompatActivity() {
         videoCapture = VideoCapture.withOutput(recorder)
 
         cameraProviderFuture.addListener({
-            // Used to bind the lifecycle of cameras to the lifecycle owner
+
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
-            // Preview
+
             val preview = Preview.Builder()
                 .setTargetAspectRatio(AspectRatio.RATIO_16_9)
                 .build()
@@ -119,16 +118,16 @@ class CameraForChallenge : AppCompatActivity() {
                     it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
                 }
 
-            // Select back camera as a default
+
             val cameraSelector = CameraSelector.Builder()
                 .requireLensFacing(CameraSelector.LENS_FACING_FRONT)
                 .build()
 
             try {
-                // Unbind use cases before rebinding
+
                 cameraProvider.unbindAll()
 
-                // Bind use cases to camera
+
                 cameraProvider.bindToLifecycle(
                     this, cameraSelector, preview, videoCapture
                 )
@@ -145,13 +144,13 @@ class CameraForChallenge : AppCompatActivity() {
 
         val curRecording = recording
         if (curRecording != null) {
-            // Stop the current recording session.
+
             curRecording.stop()
             recording = null
             return
         }
 
-        // create and start a new recording session
+
         val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
             .format(System.currentTimeMillis())
         val contentValues = ContentValues().apply {
@@ -209,10 +208,10 @@ class CameraForChallenge : AppCompatActivity() {
                                     intent.putExtra(
                                         "videoUri",
                                         videoUri.toString()
-                                    ) // Pass the videoUri as a string
+                                    )
                                     intent.putExtra("challengePassing", receivedString.toString())
                                     startActivity(intent)
-                                    //predict(videoUri)
+
 
                                 } else {
                                     recording?.close()
