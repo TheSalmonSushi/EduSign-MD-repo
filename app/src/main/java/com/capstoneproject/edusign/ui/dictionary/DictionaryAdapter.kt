@@ -11,19 +11,22 @@ import com.capstoneproject.edusign.data.model.UserDictionaryResponse
 import com.capstoneproject.edusign.databinding.ItemWordsBinding
 import com.capstoneproject.edusign.ui.dictionaryDetail.DictionaryDetailActivity
 
-class DictionaryAdapter(private var dictionaryList: List<UserDictionaryResponse>): RecyclerView.Adapter<DictionaryAdapter.DictionaryViewHolder>(), Filterable {
+class DictionaryAdapter(private var dictionaryList: List<UserDictionaryResponse>) :
+    RecyclerView.Adapter<DictionaryAdapter.DictionaryViewHolder>(), Filterable {
 
     private var filteredDictionaryList: List<UserDictionaryResponse> = dictionaryList
 
-    inner class DictionaryViewHolder (private val itemWordsBinding: ItemWordsBinding): RecyclerView.ViewHolder(itemWordsBinding.root) {
-        fun bind(dictionary : UserDictionaryResponse){
+    inner class DictionaryViewHolder(private val itemWordsBinding: ItemWordsBinding) :
+        RecyclerView.ViewHolder(itemWordsBinding.root) {
+        fun bind(dictionary: UserDictionaryResponse) {
             itemWordsBinding.textWordDictionary.text = dictionary.name
 
             itemWordsBinding.detailButton.setOnClickListener {
                 val videoLink = dictionary.link
                 val dictionaryWord = dictionary.name
                 if (!videoLink.isNullOrEmpty()) {
-                    val intent = Intent(itemWordsBinding.root.context, DictionaryDetailActivity::class.java)
+                    val intent =
+                        Intent(itemWordsBinding.root.context, DictionaryDetailActivity::class.java)
                     intent.putExtra("videoLink", videoLink)
                     intent.putExtra("dictWord", dictionaryWord)
                     itemWordsBinding.root.context.startActivity(intent)
@@ -35,12 +38,13 @@ class DictionaryAdapter(private var dictionaryList: List<UserDictionaryResponse>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DictionaryViewHolder {
-        val itemWordsBinding = ItemWordsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val itemWordsBinding =
+            ItemWordsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DictionaryViewHolder(itemWordsBinding)
     }
 
     override fun getItemCount(): Int {
-       return filteredDictionaryList.size
+        return filteredDictionaryList.size
     }
 
     override fun onBindViewHolder(holder: DictionaryViewHolder, position: Int) {
@@ -60,7 +64,7 @@ class DictionaryAdapter(private var dictionaryList: List<UserDictionaryResponse>
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val filteredResult: MutableList<UserDictionaryResponse> = mutableListOf()
 
-                if (constraint.isNullOrEmpty())  {
+                if (constraint.isNullOrEmpty()) {
                     filteredResult.addAll(dictionaryList)
                 } else {
                     val filterPattern = constraint.toString().lowercase().trim()

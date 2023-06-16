@@ -16,7 +16,6 @@ import com.capstoneproject.edusign.databinding.ActivityResultTranslateBinding
 import com.capstoneproject.edusign.ui.camera.MainActivity
 import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
 import com.capstoneproject.edusign.util.ViewModelFactory
-import java.io.File
 
 class ResultTranslateActivity : AppCompatActivity() {
 
@@ -27,7 +26,10 @@ class ResultTranslateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         resultTranslateBinding = ActivityResultTranslateBinding.inflate(layoutInflater)
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContentView(resultTranslateBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
@@ -60,10 +62,8 @@ class ResultTranslateActivity : AppCompatActivity() {
             }
         }
 
-        // for video preview
         videoView.setVideoURI(videoUri)
         videoView.start()
-        // Loop the video playback
         videoView.setOnCompletionListener { mediaPlayer ->
             mediaPlayer.start()
             mediaPlayer.isLooping = true
@@ -81,10 +81,8 @@ class ResultTranslateActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Release the resources used by the VideoView
         videoView.stopPlayback()
     }
-
 
 
     override fun onBackPressed() {
@@ -114,23 +112,6 @@ class ResultTranslateActivity : AppCompatActivity() {
 //
 //        resultTranslateBinding.translateResult.text = predictionsString
 
-        // Delete video file
-        val videoUriString = intent.getStringExtra("videoUri")
-        val videoFile = File(videoUriString)
-        deleteVideoFile(videoFile)
-
-    }
-
-    private fun deleteVideoFile(videoFile: File) {
-        if (videoFile.exists()) {
-            if (videoFile.delete()) {
-                // File deleted successfully
-                Toast.makeText(this, "Video file deleted", Toast.LENGTH_SHORT).show()
-            } else {
-                // Failed to delete the file
-                Toast.makeText(this, "Failed to delete video file", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun handleErrorMessage(error: String) {

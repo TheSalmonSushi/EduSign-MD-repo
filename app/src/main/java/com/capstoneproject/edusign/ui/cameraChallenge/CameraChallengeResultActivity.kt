@@ -16,7 +16,6 @@ import com.capstoneproject.edusign.databinding.ActivityCameraChallengeResultBind
 import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
 import com.capstoneproject.edusign.ui.resultPage.ResultTranslateViewModel
 import com.capstoneproject.edusign.util.ViewModelFactory
-import java.io.File
 
 class CameraChallengeResultActivity : AppCompatActivity() {
 
@@ -27,7 +26,10 @@ class CameraChallengeResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         resultTranslateBinding = ActivityCameraChallengeResultBinding.inflate(layoutInflater)
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContentView(resultTranslateBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
@@ -77,8 +79,6 @@ class CameraChallengeResultActivity : AppCompatActivity() {
         }
 
 
-
-
     }
 
     override fun onDestroy() {
@@ -86,7 +86,6 @@ class CameraChallengeResultActivity : AppCompatActivity() {
         // Release the resources used by the VideoView
         videoView.stopPlayback()
     }
-
 
 
     override fun onBackPressed() {

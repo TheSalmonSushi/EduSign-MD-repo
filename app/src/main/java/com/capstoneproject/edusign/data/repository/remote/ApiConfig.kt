@@ -8,9 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApiConfig {
-    companion object{
+    companion object {
         fun getApiService(): ApiService {
-            val loggingInterceptor = if(BuildConfig.DEBUG) {
+            val loggingInterceptor = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             } else {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

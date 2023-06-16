@@ -8,16 +8,15 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.capstoneproject.edusign.R
 import com.capstoneproject.edusign.databinding.ActivityDetailDictionaryBinding
 import com.google.android.exoplayer2.DefaultLoadControl
-import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 
+@Suppress("DEPRECATION")
 class DictionaryDetailActivity : AppCompatActivity() {
 
     private lateinit var detailActivityBinding: ActivityDetailDictionaryBinding
@@ -26,7 +25,10 @@ class DictionaryDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         detailActivityBinding = ActivityDetailDictionaryBinding.inflate(layoutInflater)
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContentView(detailActivityBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 

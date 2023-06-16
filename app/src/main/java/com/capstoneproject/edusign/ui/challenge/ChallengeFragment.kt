@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstoneproject.edusign.R
@@ -47,11 +46,11 @@ class ChallengeFragment : Fragment(), ChallengeAdapter.OnItemClickCallback {
     }
 
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
     override fun onItemClicked(data: ChallengePicture) {
         val intent: Intent
         when (data.name) {

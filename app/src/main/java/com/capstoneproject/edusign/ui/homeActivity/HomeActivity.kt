@@ -30,7 +30,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         homeActivityBinding = ActivityHomeBinding.inflate(layoutInflater)
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContentView(homeActivityBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 

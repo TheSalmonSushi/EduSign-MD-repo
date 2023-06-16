@@ -1,7 +1,6 @@
 package com.capstoneproject.edusign.data.repository.remote2
 
 import androidx.viewbinding.BuildConfig
-import com.capstoneproject.edusign.data.repository.remote.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,9 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApiConfig2 {
-    companion object{
+    companion object {
         fun getApiService2(): ApiService2 {
-            val loggingInterceptor = if(BuildConfig.DEBUG) {
+            val loggingInterceptor = if (BuildConfig.DEBUG) {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             } else {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

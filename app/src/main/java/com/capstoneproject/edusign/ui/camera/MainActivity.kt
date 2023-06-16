@@ -51,7 +51,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContentView(viewBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
@@ -165,7 +168,7 @@ class MainActivity : AppCompatActivity() {
             .build()
 
 
-        val countDownTimer = object: CountDownTimer(delayInMillis.toLong(), 1000) {
+        val countDownTimer = object : CountDownTimer(delayInMillis.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = millisUntilFinished / 1000
                 viewBinding.timerText.text = secondsRemaining.toString()
@@ -198,8 +201,14 @@ class MainActivity : AppCompatActivity() {
                                     }
                                     viewBinding.timerText.visibility = View.GONE
 
-                                    val intent = Intent(this@MainActivity, ResultTranslateActivity::class.java)
-                                    intent.putExtra("videoUri", videoUri.toString()) // Pass the videoUri as a string
+                                    val intent = Intent(
+                                        this@MainActivity,
+                                        ResultTranslateActivity::class.java
+                                    )
+                                    intent.putExtra(
+                                        "videoUri",
+                                        videoUri.toString()
+                                    ) // Pass the videoUri as a string
                                     startActivity(intent)
                                     //predict(videoUri)
 

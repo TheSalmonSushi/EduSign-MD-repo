@@ -7,7 +7,7 @@ import com.capstoneproject.edusign.data.repository.remote2.ApiConfig2
 import retrofit2.Call
 import retrofit2.Response
 
-class DictionaryViewModel: ViewModel() {
+class DictionaryViewModel : ViewModel() {
 
     val wordsLiveData: MutableLiveData<List<UserDictionaryResponse>> = MutableLiveData()
     val errorLiveData: MutableLiveData<String> = MutableLiveData()
@@ -42,11 +42,9 @@ class DictionaryViewModel: ViewModel() {
                 errorLiveData.value = errorMessage
             }
 
-        } )
+        })
 
     }
-
-
 
 
 }

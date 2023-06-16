@@ -30,10 +30,7 @@ import androidx.camera.video.VideoRecordEvent
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.capstoneproject.edusign.R
-import com.capstoneproject.edusign.databinding.ActivityCameraChallengeResultBinding
 import com.capstoneproject.edusign.databinding.ActivityCameraForChallengeBinding
-import com.capstoneproject.edusign.databinding.ActivityMainBinding
-import com.capstoneproject.edusign.ui.resultPage.ResultTranslateActivity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -54,7 +51,10 @@ class CameraForChallenge : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCameraForChallengeBinding.inflate(layoutInflater)
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
         setContentView(viewBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
@@ -90,7 +90,6 @@ class CameraForChallenge : AppCompatActivity() {
             viewBinding.videoCaptureButton.setBackgroundColor(Color.BLUE)
             viewBinding.timerText.visibility = View.GONE
         }
-
 
 
     }
@@ -169,7 +168,7 @@ class CameraForChallenge : AppCompatActivity() {
             .build()
 
 
-        val countDownTimer = object: CountDownTimer(delayInMillis.toLong(), 1000) {
+        val countDownTimer = object : CountDownTimer(delayInMillis.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = millisUntilFinished / 1000
                 viewBinding.timerText.text = secondsRemaining.toString()
@@ -203,8 +202,14 @@ class CameraForChallenge : AppCompatActivity() {
                                     }
                                     viewBinding.timerText.visibility = View.GONE
 
-                                    val intent = Intent(this@CameraForChallenge, CameraChallengeResultActivity::class.java)
-                                    intent.putExtra("videoUri", videoUri.toString()) // Pass the videoUri as a string
+                                    val intent = Intent(
+                                        this@CameraForChallenge,
+                                        CameraChallengeResultActivity::class.java
+                                    )
+                                    intent.putExtra(
+                                        "videoUri",
+                                        videoUri.toString()
+                                    ) // Pass the videoUri as a string
                                     intent.putExtra("challengePassing", receivedString.toString())
                                     startActivity(intent)
                                     //predict(videoUri)

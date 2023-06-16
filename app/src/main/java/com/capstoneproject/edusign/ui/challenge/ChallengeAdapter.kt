@@ -3,24 +3,23 @@ package com.capstoneproject.edusign.ui.challenge
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.ScrollCaptureCallback
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.capstoneproject.edusign.data.model.ChallengePicture
 import com.capstoneproject.edusign.databinding.ItemChallengeBinding
 
-class ChallengeAdapter(private val listChallenge: ArrayList<ChallengePicture>): RecyclerView.Adapter<ChallengeAdapter.ListViewHolder>() {
+class ChallengeAdapter(private val listChallenge: ArrayList<ChallengePicture>) :
+    RecyclerView.Adapter<ChallengeAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
 
-    fun setOnitemClickCallback (onItemClickCallback: OnItemClickCallback){
+    fun setOnitemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val binding = ItemChallengeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemChallengeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ListViewHolder(binding)
     }
 
@@ -65,8 +64,7 @@ class ChallengeAdapter(private val listChallenge: ArrayList<ChallengePicture>): 
     }
 
 
-
-    interface  OnItemClickCallback{
+    interface OnItemClickCallback {
         fun onItemClicked(data: ChallengePicture)
     }
 }
