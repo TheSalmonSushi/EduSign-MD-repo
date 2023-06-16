@@ -58,7 +58,7 @@ class ChallengeFragment : Fragment(), ChallengeAdapter.OnItemClickCallback {
             "Hewan" -> {
                 intent = Intent(requireContext(), ActivityDetailChallenge::class.java)
             }
-            "Anggota Tubuh" -> {
+            "Anggota \nTubuh" -> {
                 intent = Intent(requireContext(), ActivityDetailChallenge2::class.java)
             }
             "Warna" -> {

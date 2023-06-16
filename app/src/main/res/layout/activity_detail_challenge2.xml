@@ -55,7 +55,7 @@
             android:layout_marginBottom="40dp"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="@string/lengan"
+            android:text="@string/telinga"
             android:fontFamily="@font/bevietnampro_bold"
             android:textSize="70sp"
             tools:layout_editor_absoluteX="1dp"
@@ -71,6 +71,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginBottom="58dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="1.0">
@@ -83,10 +84,23 @@
             android:layout_marginEnd="30dp"
             android:backgroundTint="@color/white"
             android:text="@string/answer"
-            android:fontFamily="@font/bevietnampro_extrabold"
             android:textSize="16sp"
+            android:fontFamily="@font/bevietnampro_extrabold"
             android:textColor="@color/blue_primary"
             android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/blue_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="1.0">
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,7 +35,7 @@ class ChallengeAdapter(private val listChallenge: ArrayList<ChallengePicture>): 
                 "Hewan" -> {
                     intent = Intent(holder.itemView.context, ActivityDetailChallenge::class.java)
                 }
-                "Anggota Tubuh" -> {
+                "Anggota \nTubuh" -> {
                     intent = Intent(holder.itemView.context, ActivityDetailChallenge2::class.java)
                 }
                 "Warna" -> {

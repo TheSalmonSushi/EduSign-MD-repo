@@ -1,12 +1,14 @@
 package com.capstoneproject.edusign.ui.challenge
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.WindowManager
+import android.view.*
 import com.capstoneproject.edusign.databinding.ActivityDetailChallengeBinding
 import com.capstoneproject.edusign.ui.cameraChallenge.CameraChallengeResultActivity
 import com.capstoneproject.edusign.ui.cameraChallenge.CameraForChallenge
+
 
 class ActivityDetailChallenge : AppCompatActivity() {
 
@@ -20,6 +22,8 @@ class ActivityDetailChallenge : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+
         binding.peragakanButton.setOnClickListener {
             val intent = Intent(this@ActivityDetailChallenge, CameraForChallenge::class.java)
             intent.putExtra("challenge", "gajah")
@@ -28,6 +32,7 @@ class ActivityDetailChallenge : AppCompatActivity() {
 
 
 
-
     }
+
+
 }
