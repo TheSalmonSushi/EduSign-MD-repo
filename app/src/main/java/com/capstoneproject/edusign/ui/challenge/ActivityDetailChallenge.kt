@@ -22,9 +22,6 @@ class ActivityDetailChallenge : AppCompatActivity() {
         )
         setContentView(binding.root)
 
-
-
-
         binding.peragakanButton.setOnClickListener {
             val intent = Intent(this@ActivityDetailChallenge, CameraForChallenge::class.java)
             intent.putExtra("challenge", "gajah")

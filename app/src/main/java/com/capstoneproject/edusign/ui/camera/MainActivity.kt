@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
         } else {
@@ -86,7 +85,6 @@ class MainActivity : AppCompatActivity() {
 
         val restartMainActivity = intent.getBooleanExtra("restartMainActivity", false)
         if (restartMainActivity) {
-            // Reset the button color and hide the start movement text
             viewBinding.videoCaptureButton.setBackgroundColor(Color.BLUE)
             viewBinding.timerText.visibility = View.GONE
         }
