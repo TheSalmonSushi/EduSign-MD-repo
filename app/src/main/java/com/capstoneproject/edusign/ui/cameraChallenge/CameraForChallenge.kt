@@ -45,7 +45,7 @@ class CameraForChallenge : AppCompatActivity() {
 
     private var videoCapture: VideoCapture<Recorder>? = null
     private var recording: Recording? = null
-
+    private var isRecording = false
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -183,7 +183,9 @@ class CameraForChallenge : AppCompatActivity() {
                                 viewBinding.videoCaptureButton.apply {
                                     text = "Recording"
                                     setBackgroundColor(Color.RED)
+                                    isRecording = true
                                     startTimer()
+                                    hideNavigationBar()
                                 }
                             }
                             is VideoRecordEvent.Finalize -> {
@@ -233,6 +235,16 @@ class CameraForChallenge : AppCompatActivity() {
         }
         countDownTimer.start()
 
+    }
+
+    private fun hideNavigationBar() {
+        window.decorView.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                    View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                    View.SYSTEM_UI_FLAG_FULLSCREEN or
+                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
     }
 
     private fun startTimer() {
