@@ -100,6 +100,12 @@ class CameraChallengeResultActivity : AppCompatActivity() {
         }
 
         resultTranslateBinding.restartVideo.setOnClickListener {
+            val videoUriString = intent.getStringExtra("videoUri")
+            val videoUri = Uri.parse(videoUriString)
+
+            val contentResolver: ContentResolver = contentResolver
+            contentResolver.delete(videoUri, null, null)
+
             val intent = Intent(this@CameraChallengeResultActivity, CameraForChallenge::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             intent.putExtra("restartMainActivity", true)
