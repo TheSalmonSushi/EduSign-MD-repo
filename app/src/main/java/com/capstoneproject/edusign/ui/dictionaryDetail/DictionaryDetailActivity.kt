@@ -83,6 +83,7 @@ class DictionaryDetailActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        player.pause()
         if (isServiceBound) {
             unbindService(serviceConnection)
             isServiceBound = false
