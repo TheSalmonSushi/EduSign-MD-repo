@@ -3,9 +3,9 @@ package com.capstoneproject.edusign.ui.resultPage
 import android.app.Application
 import android.content.Context
 import android.net.Uri
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.capstoneproject.edusign.data.model.Prediction
 import com.capstoneproject.edusign.data.repository.remote.ApiConfig
@@ -16,9 +16,9 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.io.FileOutputStream
 
-class ResultTranslateViewModel(application: Application) : ViewModel() {
+class ResultTranslateViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val context: Context = application.applicationContext
+    private val context = getApplication<Application>().applicationContext
 
     private val _predictionLiveData = MutableLiveData<Prediction>()
     val predictionLiveData: LiveData<Prediction> = _predictionLiveData

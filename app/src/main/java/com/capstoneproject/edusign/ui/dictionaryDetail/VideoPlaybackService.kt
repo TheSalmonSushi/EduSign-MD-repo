@@ -1,6 +1,5 @@
 package com.capstoneproject.edusign.ui.dictionaryDetail
 
-import com.capstoneproject.edusign.ui.dictionaryDetail.DictionaryDetailActivity
 import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service

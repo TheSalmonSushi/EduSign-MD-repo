@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="32dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/pager_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:text="@string/challenge_category_1_question"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:fontFamily="@font/bevietnampro_medium"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:id="@+id/pager_tv_questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textStyle="bold"
+            android:fontFamily="@font/bevietnampro_bold"
+            tools:text="@string/soal_challenge"
+            android:textAlignment="center"
+            android:textSize="45sp"
+            app:layout_constraintTop_toBottomOf="@id/pager_tv_title"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"/>
+
+
+        <Button
+            android:id="@+id/btn_peragakan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/answer"
+            android:backgroundTint="@color/blue_primary"
+            android:fontFamily="@font/bevietnampro_bold"
+            app:layout_constraintStart_toStartOf="@id/pager_tv_questions"
+            app:layout_constraintEnd_toEndOf="@id/pager_tv_questions"
+            app:layout_constraintTop_toBottomOf="@id/pager_tv_questions"
+            android:layout_marginTop="30dp"/>
+
+        <ImageView
+            android:id="@+id/rightAnswer"
+            android:visibility="gone"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="@id/btn_peragakan"
+            app:layout_constraintHorizontal_bias="0.541"
+            app:layout_constraintStart_toStartOf="@id/btn_peragakan"
+            app:layout_constraintTop_toBottomOf="@id/btn_peragakan"
+            android:src="@drawable/ic_priority_low" />
+
+        <ImageView
+            android:id="@+id/wrongAnswer"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="80dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/btn_peragakan"
+            app:layout_constraintHorizontal_bias="0.541"
+            app:layout_constraintStart_toStartOf="@id/btn_peragakan"
+            app:layout_constraintTop_toBottomOf="@id/btn_peragakan"
+            android:src="@drawable/ic_priority_high" />
+
+        <TextView
+            android:id="@+id/wrongText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/wrongAnswer"
+            app:layout_constraintEnd_toEndOf="@id/wrongAnswer"
+            app:layout_constraintStart_toStartOf="@id/wrongAnswer"
+            app:layout_constraintTop_toTopOf="@id/wrongAnswer"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/rightText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/rightAnswer"
+            app:layout_constraintEnd_toEndOf="@id/rightAnswer"
+            app:layout_constraintStart_toStartOf="@id/rightAnswer"
+            app:layout_constraintTop_toTopOf="@id/rightAnswer"
+            tools:text="100" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Edu Sign</string>
+    <string name="title_activity_detail">Title Detail</string>
     <string name="start_capture">Start Capture</string>
     <string name="stop_capture">Stop Capture</string>
     <string name="menu_title_bottom_nav_home">Challenge</string>
@@ -7,7 +8,8 @@
     <string name="menu_title_blank" translatable="false">" "</string>
     <string name="menu_title_bottom_nav_library">DICTIONARY</string>
     <string name="challenge">Selamat datang di </string>
-    <string name= "edusign">EduSign</string>
+    <string name="soal_challenge">Kata</string>
+    <string name="edusign">EduSign</string>
     <string name="ambil_ulang_video">Ambil Ulang video</string>
     <string name="hasil_terjemahan">Hasil Terjemahan</string>
     <string name="terjemahan">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam felis enim, hendrerit ut felis id, ultrices posuere augue. Phasellus a suscipit erat. Suspendisse ac iaculis eros, et finibus justo. Vivamus consectetur est nibh, ut suscipit nulla convallis sed. Integer pretium metus vel libero feugiat, vitae sodales risus cursus. Vivamus vestibulum congue tortor, id pellentesque erat varius et. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nulla facilisi.</string>
@@ -37,20 +39,21 @@
     <string name="challenge_introduction">challenge ini berisi tentang blablablabla</string>
     <string name="kembali">kembali</string>
     <string name="mulai">mulai</string>
-    <string name="coba_lagi">coba lagi</string>
+    <string name="back_to_soal">Kembali ke Soal</string>
     <string name="jawaban_benar">Jawaban anda benar</string>
     <string name="jawaban_salah">Jawaban anda salah</string>
     <string name="gajah">Gajah</string>
     <string name="telinga">Telinga</string>
     <string name="biru">Biru</string>
     <string name="ibu">Nenek</string>
+    <string name="user_progress_title">Progress Pembelajaranmu</string>
 
 
     <integer-array name="data_photo">
         <item>@drawable/category1_animal</item>
         <item>@drawable/category2_body_parts</item>
-        <item>@drawable/category3_warna</item>
         <item>@drawable/category4_keluarga</item>
+        <item>@drawable/category3_warna</item>
         <item>@drawable/category5_jobs</item>
         <item>@drawable/category6_sapaan</item>
     </integer-array>

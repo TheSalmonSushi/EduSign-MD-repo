@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
     id 'kotlin-parcelize'
 }
 
@@ -46,6 +47,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
 
     // CameraX core library
     def camerax_version = '1.2.0-alpha02'
@@ -87,4 +89,13 @@ dependencies {
 
     //Splash Screen
     implementation 'androidx.core:core-splashscreen:1.0.1'
+
+    //View Pager 2
+    implementation "androidx.paging:paging-runtime-ktx:2.1.2"
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    //Room
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
 }

@@ -5,6 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ChallengePicture(
-    val name: String,
     val photo: Int,
 ) : Parcelable

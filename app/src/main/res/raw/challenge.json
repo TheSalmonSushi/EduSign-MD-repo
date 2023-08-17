@@ -1,0 +1,130 @@
+{
+  "challenge": [
+    {
+      "id": 1,
+      "name": "Hewan",
+      "questions": [
+        {
+          "questionsId": 1,
+          "kata": "Gajah",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 2,
+          "kata": "Serigala",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 3,
+          "kata": "Lebah",
+          "isAnswered": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Anggota Tubuh",
+      "questions": [
+        {
+          "questionsId": 1,
+          "kata": "Telinga",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 2,
+          "kata": "Mata",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 3,
+          "kata": "Hidung",
+          "isAnswered": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Keluarga",
+      "questions": [
+        {
+          "questionsId": 1,
+          "kata": "Ayah",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 2,
+          "kata": "Ibu",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 3,
+          "kata": "Nenek",
+          "isAnswered": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Warna",
+      "questions": [
+        {
+          "questionsId": 1,
+          "kata": "Biru",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 2,
+          "kata": "Putih",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 3,
+          "kata": "Hitam",
+          "isAnswered": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Pekerjaan",
+      "questions": [
+        {
+          "questionsId": 1,
+          "kata": "Polisi",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 2,
+          "kata": "Pemadam Kebakaran",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 3,
+          "kata": "Membaca",
+          "isAnswered": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Sapaan",
+      "questions": [
+        {
+          "questionsId": 1,
+          "kata": "Halo",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 2,
+          "kata": "Terimakasih",
+          "isAnswered": false
+        },
+        {
+          "questionsId": 3,
+          "kata": "Tidak",
+          "isAnswered": false
+        }
+      ]
+    }
+  ]
+}

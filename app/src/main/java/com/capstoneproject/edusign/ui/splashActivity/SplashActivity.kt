@@ -1,8 +1,8 @@
 package com.capstoneproject.edusign.ui.splashActivity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.capstoneproject.edusign.R
 
 @SuppressLint("CustomSplashScreen")

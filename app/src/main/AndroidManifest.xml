@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Declare features -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -23,10 +22,19 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.EduSign"
         tools:targetApi="31">
-        <service
-            android:name=".CameraChallengeResultService"
-            android:enabled="true"
-            android:exported="true"></service>
+        <activity
+            android:name=".ui.profilePage.UserProgressActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.cameraChallenge.ChallengeCameraActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.detailChallenge.DetailChallengeActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".ui.resultPage.ResultTranslateVideoService"
             android:enabled="true"
@@ -35,31 +43,6 @@
             android:name=".ui.dictionaryDetail.VideoPlaybackService"
             android:enabled="true"
             android:exported="true" />
-
-        <activity
-            android:name=".ui.cameraChallenge.CameraChallengeResultActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.cameraChallenge.CameraForChallenge"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.challenge.ActivityDetailChallenge4"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.challenge.ActivityDetailChallenge3"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.challenge.ActivityDetailChallenge2"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.challenge.ActivityDetailChallenge"
-            android:exported="false"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.dictionaryDetail.DictionaryDetailActivity"
             android:exported="false"

@@ -2,15 +2,13 @@ package com.capstoneproject.edusign.ui.resultPage
 
 import android.content.ContentResolver
 import android.content.Intent
-import android.media.MediaScannerConnection
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import android.widget.VideoView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import com.capstoneproject.edusign.R
@@ -18,8 +16,7 @@ import com.capstoneproject.edusign.data.model.Prediction
 import com.capstoneproject.edusign.databinding.ActivityResultTranslateBinding
 import com.capstoneproject.edusign.ui.camera.MainActivity
 import com.capstoneproject.edusign.ui.homeActivity.HomeActivity
-import com.capstoneproject.edusign.util.ViewModelFactory
-import java.io.File
+import com.capstoneproject.edusign.util.CameraResultViewModelFactory
 
 class ResultTranslateActivity : AppCompatActivity() {
 
@@ -44,8 +41,8 @@ class ResultTranslateActivity : AppCompatActivity() {
         val videoUriString = intent.getStringExtra("videoUri")
         val videoUri = Uri.parse(videoUriString)
 
-        val viewModelFactory = ViewModelFactory(application)
-        viewModel = ViewModelProvider(this, viewModelFactory)[ResultTranslateViewModel::class.java]
+        val cameraResultViewModelFactory = CameraResultViewModelFactory(application)
+        viewModel = ViewModelProvider(this, cameraResultViewModelFactory)[ResultTranslateViewModel::class.java]
 
         viewModel.performPrediction(videoUri)
 

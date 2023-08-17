@@ -1,6 +1,6 @@
 package com.capstoneproject.edusign.data.repository.remote
 
-import androidx.viewbinding.BuildConfig
+import com.capstoneproject.edusign.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

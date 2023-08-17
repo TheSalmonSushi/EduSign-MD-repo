@@ -28,7 +28,7 @@ class DictionaryViewModel : ViewModel() {
 
                 if (response.isSuccessful) {
                     val words = response.body()
-                    wordsLiveData.value = words
+                    wordsLiveData.value = words!!
                 } else {
                     val errorMessage = "Error: ${response.message()}"
                     errorLiveData.value = errorMessage
@@ -41,10 +41,6 @@ class DictionaryViewModel : ViewModel() {
                 val errorMessage = "Failure: ${t.message}"
                 errorLiveData.value = errorMessage
             }
-
         })
-
     }
-
-
 }

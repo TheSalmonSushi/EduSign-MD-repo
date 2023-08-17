@@ -3,8 +3,21 @@
     <style name="Base.Theme.EduSign" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/blue_primary</item>
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryDark">@color/blue_secondary</item>
+        <item name="colorAccent">@color/blue_primary</item>
 
     </style>
 
     <style name="Theme.EduSign" parent="Base.Theme.EduSign" />
+
+    <style name="Theme.EduSign.AppBarOverlay" parent="Base.Theme.EduSign" />
+
+    <style name="CircularDeterminateProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/circle</item>
+    </style>
+
+
 </resources>
